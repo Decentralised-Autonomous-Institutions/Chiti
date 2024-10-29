@@ -11,7 +11,16 @@
 A decentralised implementation of the *[beckn protocol](https://developers.becknprotocol.io/docs/introduction/introduction/)*
 
 ## Why?
-Decentralised networks require decentralised Identities. Most "decentralised identities" solutions today use OAuth2.0 or OpenID Connect to authenticate users. These solutions however don't have a way to allow the user to update features of attributes about themselves on these systems to truly reflect the nature of an identity. Chiti, the soul identity or innate nature of an identity is constant. A human being is born with a soul. Human personality, soul and character are all distinct from one another. Personality results from a cumulative effect of all the actions, thoughts, and impressions of an individual. To store this personality as a digital identity requires the use of new age digital storage tools such as CIDs as identifiers for data, Consensus protocols that decide on an agreed time tracking mechanism for the network, Data Finalisation protocols to store the personality of the identity, Public-Private Keys and signing protocols for accessing the digital identity. This project aims create a library that helps applications integrate this identity protocol to build truly decentralised digital solutions.
+Decentralised networks require decentralised Identities. Most "decentralised identities" solutions today use OAuth2.0 or OpenID Connect to authenticate users. These solutions however don't have a way to allow the user to update thier personality, features and attributes of themselves on these systems to truly reflect the nature of an identity.
+
+Human personality, soul and character are all distinct from one another.
+The soul Identity constitutes the Chiti. It is generally made up of the ideals that make up an individual soul or a nation. Chiti, the soul identity or innate nature of an identity is constant. Or we can say, alterations on ones ideals rarely change over a given lifetime. As we can see in our society, changing the nature of an individual is a tough task!
+
+Personality results from a cumulative effect of all the actions, thoughts, and impressions of an individual. To store this personality as a digital identity requires the use of new age digital storage tools such as CIDs as identifiers for data, Consensus protocols that decide on an agreed time tracking mechanism for the network, Data Finalisation protocols to store the personality of the identity, Public-Private Keys and signing protocols for accessing the digital identity.
+
+Character or Culture is the accumulated knowledge of the identity. Whatever is in according with our Chiti is added on to Culture. Hence, Chiti acts as a standard for assessing the culture of an identity.
+
+This project aims create a library that helps applications integrate this identity protocol into a suit of APIs to build truly decentralised digital solutions.
 
 ## What is a protocol?
 Protocols serve as tools or systems to facilitate coordinated behaviour. Our entire social setting is comprised of protocols, whether we like them or not. For example, the protocol of driving on the right side of the road, the protocol of standing in a queue, the protocol of shaking hands, the protocol of saying "thank you" and "please". Some protocols are enforced by a central authority like a national government body, some are social customs we follow, some emerge in times of emergency need, for. eg the social distancing protocol during the COVID-19 pandemic.
