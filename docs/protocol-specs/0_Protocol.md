@@ -15,7 +15,7 @@ or in other words, What aspects of the protocol orient it towards the future and
 The protocol acts as a tool to help bring nature to culture. Chiti, the Spirit Identity is used to describe the innate nature of that identity. Chiti once defined, becomes the standard of measurement for an individual. Whatever is in alignment with ones Chiti is added onto the identity, this ends up describing the culture of the identity. The identity is not however always singular, the individual 'I' is inseperable related to the plural 'We'. The society. Each group of individuals that constitute communities, institutions, State, a brand identity, has an innate nature of its own. A group mind you can call it. Chiti is the touchstone on which each action, each attitude is tested, and determined to be acceptable or otherwise. In blockchain terms, Chiti acts as the validator to what becomes part of the groups culture.
 
 ## What is the role of duration & repititiveness in the protocol?
->It is the protocol itself that creates a sense of time
+>It is the protocol itself that creates a sense of time - Kei Krutler
 
 Blockchain consensus engines such as Polkadots' BABE + GRANDPA protocol provide a sense of time to the participants network.
 BABE (Blind Assignment for Blockchain Extension) and GRANDPA (GHOST-based Recursive Ancestor Deriving Prefix Agreement) are two complementary protocols used by Polkadot to achieve consensus on its blockchain network.
@@ -27,7 +27,7 @@ Together, BABE and GRANDPA enable Polkadot to achieve both fast block production
 Here blockspace acts as a reserviour of culture. It is also used in future processes to help shape the outcome as a form of feedback mechanism.
 
 ## What is the vision of a future beyond the protocol?
-The vision of the project is to help aid establish Dharma. Here Dharma can be loosely translated in English to "intrinsic responsibility". 
+The vision of the project is to help systems establish Dharma. Here Dharma can be loosely translated in English to "intrinsic responsibility". 
 >“Intrinsic responsibility” means that the system is designed to send feedback about the consequences of decision making directly and quickly and compellingly to the decision makers. - Donella Medows, Systems Thinking
 
 The vision of the protocol is to provide a tool for systems to help instill intrinsic responsibility within its citizens. This may initially require the usage of heavy technology in order to bring current systems in order, however, I believe...
