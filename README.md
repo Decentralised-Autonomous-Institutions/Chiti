@@ -11,14 +11,14 @@
 A decentralised implementation of the *[beckn protocol](https://developers.becknprotocol.io/docs/introduction/introduction/)*
 
 ## Why?
-Decentralised networks require decentralised Identities. Most "decentralised identities" solutions today use OAuth2.0 or OpenID Connect to authenticate users. These solutions however don't have a way to allow the user to update thier personality, features and attributes of themselves on these systems to truly reflect the nature of an identity.
+Decentralised networks require decentralised Identities. Most identity solutions today use OAuth2.0 or OpenID Connect to authenticate users. These solutions however don't have a way to allow the user to update thier personality, features and attributes of themselves on these systems to truly reflect the nature of an identity.
 
 Human personality, soul and character are all distinct from one another.
 The soul Identity constitutes the Chiti. It is generally made up of the ideals that make up an individual soul or a nation. Chiti, the soul identity or innate nature of an identity is constant. Or we can say, alterations on ones ideals rarely change over a given lifetime. As we can see in our society, changing the nature of an individual is a tough task!
 
-Personality results from a cumulative effect of all the actions, thoughts, and impressions of an individual. To store this personality as a digital identity requires the use of new age digital storage tools such as CIDs as identifiers for data, Consensus protocols that decide on an agreed time tracking mechanism for the network, Data Finalisation protocols to store the personality of the identity, Public-Private Keys and signing protocols for accessing the digital identity.
+Personality results from a cumulative effect of all the actions, thoughts, and impressions of an individual. To store this personality as a digital identity requires the use of new age digital storage tools such as CIDs as identifiers for data, Consensus protocols that decide on an agreed time tracking mechanism for the network, Data Finalisation protocols to store an immutable of latest version of an identity, Public-Private Keys and signing protocols for accessing the digital identity.
 
-Character or Culture is the accumulated knowledge of the identity. Whatever is in according with our Chiti is added on to Culture. Hence, Chiti acts as a standard for assessing the culture of an identity.
+Character or Culture is the accumulated knowledge of the identity. Whatever is in accordance with our Chiti is added on to Culture. Hence, Chiti acts as a standard for assessing the culture of an identity.
 
 This project aims create a library that helps applications integrate this identity protocol into a suit of APIs to build truly decentralised digital solutions.
 
@@ -29,7 +29,7 @@ Nations or institutions create protocols in order to enhance the efficiency of t
 
 There are two main aspects of protocols according to [Olivia Steiert](https://summerofprotocols.com/research/protocols-in-emergency-time),
 * **Simultaneous enablement & restraint**: Protocols enable certain behaviours while restraining others. For example, the protocol of driving on the right side of the road enables the smooth flow of traffic while restraining the chaos that would ensue if everyone drove on the side of the road they wanted to.
-* Inherent temporality: Protocols exist within the "realm of time". They are intinsically process oriented.
+* **Inherent temporality**: Protocols exist within the "realm of time". They are intinsically process oriented.
 
 Protocols can evolve over time through feedback. Protocols inflict certain behaviours in people that cannot be guessed during its inception. Understanding these behaviours and adopting changes to the protocol can help a community/organisation to achieve its goals more efficiently. In a way, its a form of self-organisation.
 
