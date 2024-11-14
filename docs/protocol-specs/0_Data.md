@@ -3,7 +3,7 @@ Please refer to the first document [0_Protocol.md](./0_Protocol.md) for a detail
 
 ## User Interface
 The user interface elements are generally encoded as a schema. This allows each application to attach their own "themes" to the UI elements allowing diversity in expression. A general schema may be implemented by the network for others to fork and modify.
-* HTTP gateways - The end goal is to move identities onto a decentralised network. However, in order to reach out to the audience of today, interoperability with todays data is a must. The APIs built allow an individuals data/journal entries to be accessible via today modern browsers. This is generally done by creating RPCs to access the identities journal and a store maintaining the list of peer IDs along with their capabilities while accessing the store.
+* HTTP gateways - The end goal is to move identities onto a decentralised network. However, in order to reach out to the audience of today, interoperability with todays data is a must. The APIs built allow an individuals data/journal entries to be accessible via todays modern browsers. This is generally done by creating RPCs to access the identities journal and a store maintaining the list of peer IDs along with their capabilities while accessing the store.
 * Routing APIs - APIs identity nodes might have to implement (https://specs.ipfs.tech/routing/http-routing-v1/)
 
 # Data formats
@@ -29,7 +29,3 @@ ip4|                          multiaddr|      0x04|           permanent |
 tcp|                            multiaddr|      0x06|           permanent|
 sha1|                           multihash|      0x11|           permanent
 sha2-256|                       multihash|      0x12|           permanent
-
-## Core schema
-<!-- 
-The genesis point/origin for the projects technical specification is recorded itself as a CID. The schema of the core entities defined in this project  -->
