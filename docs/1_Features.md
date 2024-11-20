@@ -23,6 +23,8 @@ A blockchain network is maintained to keep track of record hashes of network ver
 
 How it Works: For each piece of data in a user's Digital Journal, the application records which other participants also know or can attest to that data.
 Benefit: Enhances the credibility of user claims through social proof without relying on centralized authorities.
+A user requests verification from contacts who can confirm specific attributes. The application aggregates these attestations to strengthen the claim. Signature aggregation schemes like the Schnorr Signatures (used in current Bitcoin version) can be used to aggregate multiple signatures into a single signature. This single signature can be used to verify the authenticity of the claim.
+Benefit: Provides a robust method for attribute verification that is decentralized, privacy-preserving and light weight.
 
 ### 3. **Trust Management via Social Credit (Credit Graph)**
 Feature: Users assign and manage a Credit Score in the form of a feedback rating mechanism, representing the degree of trust in them, forming a Credit Graph.
@@ -30,19 +32,12 @@ Feature: Users assign and manage a Credit Score in the form of a feedback rating
 How it Works: Users allocate credit to others based on personal relationships and interactions, which can be used as social collateral for various transactions.
 Benefit: Facilitates a decentralized trust network that can be leveraged for authentication, verification, and other trust-dependent activities.
 
-### 4. **Attribute Verification Through Social Proof**
-Feature: Users can verify attributes (e.g., location, qualifications) by obtaining attestations from their social network.
-
-How it Works: A user requests verification from contacts who can confirm specific attributes. The application aggregates these attestations to strengthen the claim. Signature aggregation schemes like the Schnorr Signatures (used in current Bitcoin version) can be used to aggregate multiple signatures into a single signature. This single signature can be used to verify the authenticity of the claim.
-
-Benefit: Provides a robust method for attribute verification that is decentralized, privacy-preserving and light weight.
-
-### 5. **System Integrity via Liens on Credit**
+### 4. **System Integrity via Liens on Credit**
 
 How it Works: When a user makes a claim, a temporary hold is placed on the credit between participants involved in the verification or fulfillment similar to escrow contracts.
 Benefit: Deters false claims and malicious behavior by introducing a cost to dishonesty, thereby enhancing trust in the system.
 
-### 6. **Unique Identity Verification (Sybil-Resistance)**
+### 5. **Unique Identity Verification (Sybil-Resistance)**
 Feature: Ensures that each participant is a unique human to prevent duplicate or fake accounts (Sybil attacks).
 
 How it Works: Users prove their uniqueness by verifying random personal data points (e.g., past locations) through their social network, making it statistically improbable for duplicates to exist.
