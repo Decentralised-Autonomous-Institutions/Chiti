@@ -16,28 +16,29 @@ const config = defineConfig({
     "html, body": {
       margin: 0,
       padding: 0,
-      backgroundColor: "white",
+      bg: 'gray.50',
+      color: 'gray.800',
     }
   },
 
   // Theme configuration
   theme: {
-    // Breakpoints
-    breakpoints: {
-      sm: "320px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-    },
-
-    // Token definitions
     tokens: {
       colors: {
-        // Primary Colors
-        black: { value: "#000000" },
-        white: { value: "#FFFFFF" },
-        
-        // Primary Accents
+        primary: {
+          value: '#007FFF',
+          description: 'Primary brand color'
+        },
+        background: {
+          value: '#F7FAFC',
+          description: 'Default background color'
+        },
+        border: {
+          value: "#e5e5e5",
+          DEFAULT: { value: "#e5e5e5" },
+          rgb: { value: "229, 229, 229" }
+        },
+
         success: {
           DEFAULT: { value: "#15a37f" },
           rgb: { value: "21, 163, 127" }
@@ -46,7 +47,7 @@ const config = defineConfig({
           DEFAULT: { value: "#3e3f4b" },
           rgb: { value: "62, 63, 75" }
         },
-        
+
         // Secondary Accents
         blue: {
           DEFAULT: { value: "#2D63F6" },
@@ -56,24 +57,101 @@ const config = defineConfig({
           DEFAULT: { value: "#7C3AED" },
           rgb: { value: "124, 58, 237" }
         },
-        
-        // Background System
-        background: {
-          DEFAULT: { value: "#F7F7F8" },
-          rgb: { value: "247, 247, 248" }
+      },
+
+      fonts: {
+        body: {
+          value: 'system-ui, sans-serif',
+          description: 'Body text font family'
         },
-        border: {
-          DEFAULT: { value: "#e5e5e5" },
-          rgb: { value: "229, 229, 229" }
+        heading: {
+          value: 'system-ui, sans-serif',
+          description: 'Heading font family'
+        }
+      },
+
+      fontSizes: {
+        xs: { value: '0.75rem' },
+        sm: { value: '0.875rem' },
+        md: { value: '1rem' },
+        lg: { value: '1.125rem' },
+        xl: { value: '1.25rem' }
+      },
+
+      spacing: {
+        1: { value: '0.25rem' },
+        2: { value: '0.5rem' },
+        3: { value: '0.75rem' },
+        4: { value: '1rem' },
+        5: { value: '1.25rem' },
+        6: { value: '1.5rem' }
+      },
+
+      radii: {
+        sm: { value: '0.125rem' },
+        md: { value: '0.375rem' },
+        lg: { value: '0.5rem' },
+        full: { value: '9999px' }
+      },
+
+      shadows: {
+        sm: {
+          value: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+          description: 'Small shadow'
+        },
+        md: {
+          value: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+          description: 'Medium shadow'
         }
       }
     },
+
+    textStyles: {
+      h1: {
+        fontSize: ['2xl', '3xl'],
+        fontWeight: 'bold',
+        lineHeight: 'tall'
+      },
+      h2: {
+        fontSize: ['xl', '2xl'],
+        fontWeight: 'semibold',
+        lineHeight: 'tall'
+      }
+    },
+
+    layerStyles: {
+      card: {
+        bg: 'white',
+        borderRadius: 'lg',
+        boxShadow: 'sm',
+        p: '6'
+      },
+      selected: {
+        bg: 'gray.50',
+        borderWidth: '1px',
+        borderColor: 'blue.500'
+      }
+    },
+
+    animationStyles: {
+      fadeIn: {
+        animation: 'fadeIn 0.3s ease-in-out'
+      },
+      slideIn: {
+        animation: 'slideIn 0.4s ease-out'
+      }
+    },
+
 
     // Animation keyframes
     keyframes: {
       fadeIn: {
         '0%': { opacity: '0' },
         '100%': { opacity: '1' }
+      },
+      slideIn: {
+        '0%': { transform: 'translateY(20px)', opacity: 0 },
+        '100%': { transform: 'translateY(0)', opacity: 1 }
       }
     },
 
@@ -81,10 +159,16 @@ const config = defineConfig({
     semanticTokens: {
       colors: {
         primary: { value: "{colors.black}" },
+        text: {
+          value: {
+            base: '#1A202C',
+            _dark: '#F7FAFC'
+          },
+        },
         'primary-accent': { value: "{colors.success.DEFAULT}" },
         'secondary-accent': { value: "{colors.blue.DEFAULT}" },
-        surface: { value: "{colors.background.DEFAULT}" },
-        border: { value: "{colors.border.DEFAULT}" },
+        surface: { value: "{colors.background}" },
+        border: { value: "{colors.border}" },
       }
     },
 
@@ -101,7 +185,15 @@ const config = defineConfig({
           transition: 'all 0.2s',
         },
         variants: {
-          variant: {
+          visual: {
+            solid: {
+              bg: 'primary',
+              color: 'white'
+            },
+            outline: {
+              borderWidth: '1px',
+              borderColor: 'primary'
+            },
             primary: {
               bg: '{colors.success.DEFAULT}',
               color: '{colors.white}',
@@ -141,9 +233,9 @@ const config = defineConfig({
               bg: '{colors.white}',
               color: '{colors.black}',
               border: '1px solid',
-              borderColor: '{colors.border.DEFAULT}',
+              borderColor: '{colors.border}',
               _hover: {
-                bg: '{colors.background.DEFAULT}',
+                bg: '{colors.background}',
               }
             }
           },
@@ -154,6 +246,7 @@ const config = defineConfig({
           }
         },
         defaultVariants: {
+          colorPalette: 'bg',
         }
       }
     }

@@ -1,4 +1,4 @@
-import type { Route } from "./+types/identity-dashboard";
+import type { Route } from "../+types/identity-dashboard";
 import {
     Box,
     Field,
@@ -27,7 +27,7 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "~/components/ui/drawer"
-import { useColorMode } from '../components/ui/color-mode';
+import { useColorMode } from '../../components/ui/color-mode';
 import { Avatar } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import { Edit, Key, Lock, Shield, User, Settings } from 'lucide-react';
@@ -65,7 +65,7 @@ interface IdentityDashboardProps {
 const defaultIdentity = {
     did: 'abcd:abcd:abcd',
     name: 'Anonymous User',
-    avatar: '/images/icons/avatar.webp',
+    avatar: '/images/avatar.webp',
     status: 'pending' as const,
     verifiedCredentials: [],
     devices: [],

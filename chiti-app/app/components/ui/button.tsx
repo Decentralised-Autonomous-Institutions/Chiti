@@ -12,13 +12,28 @@ interface ButtonLoadingProps {
   loadingText?: React.ReactNode
 }
 
-export interface ButtonProps extends ChakraButtonProps, ButtonLoadingProps {}
+export interface ButtonProps extends ChakraButtonProps, ButtonLoadingProps { }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(props, ref) {
     const { loading, disabled, loadingText, children, ...rest } = props
     return (
-      <ChakraButton disabled={loading || disabled} ref={ref} {...rest}>
+      <ChakraButton
+        px="8px"
+        py="2px"
+        mx="10px"
+        border="1px solid #030303"
+        boxSizing="border-box"
+        borderRadius="24px"
+        bg="#ffffff"
+        color="#030303"
+        fontSize="14px"
+        fontFamily="Roboto Condensed"
+        lineHeight="16px"
+        outline="none"
+        disabled={loading || disabled}
+        ref={ref}
+        {...rest}>
         {loading && !loadingText ? (
           <>
             <AbsoluteCenter display="inline-flex">
