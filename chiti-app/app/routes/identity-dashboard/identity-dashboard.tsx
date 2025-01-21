@@ -1,320 +1,135 @@
 import type { Route } from "../+types/identity-dashboard";
-import {
-    Box,
-    Field,
-    Container,
-    Grid,
-    Heading,
-    Text,
-    Input,
-    Stack,
-    Card,
-    Flex,
-    IconButton,
-    defineStyle,
-    useDisclosure,
-} from '@chakra-ui/react';
-// Import changes at the top of the file
-import {
-    DrawerActionTrigger,
-    DrawerBackdrop,
-    DrawerBody,
-    DrawerCloseTrigger,
-    DrawerContent,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerRoot,
-    DrawerTitle,
-    DrawerTrigger,
-} from "~/components/ui/drawer"
-import { useColorMode } from '../../components/ui/color-mode';
-import { Avatar } from "~/components/ui/avatar";
-import { Button } from "~/components/ui/button";
-import { Edit, Key, Lock, Shield, User, Settings } from 'lucide-react';
-import { Tag } from "~/components/ui/tag";
-import { useEffect } from "react";
+import { 
+  Layout, 
+  Typography, 
+  Input, 
+  Card, 
+  Button, 
+  Space, 
+  Grid, 
+  Avatar, 
+  Tag, 
+  Drawer 
+} from 'antd';
+import { 
+  EditOutlined, 
+  KeyOutlined, 
+  LockOutlined, 
+  UserOutlined, 
+  SettingOutlined 
+} from '@ant-design/icons';
+import { useEffect, useState } from "react";
+
+const { Content } = Layout;
+const { Title, Text } = Typography;
+const { useBreakpoint } = Grid;
 
 export function meta({ }: Route.MetaArgs) {
-    return [
-        { title: "Identity Dashboard" },
-        { name: "identity-dashboard", content: "Identity Dashboard" },
-    ];
+  return [
+    { title: "Identity Dashboard" },
+    { name: "identity-dashboard", content: "Identity Dashboard" }
+  ];
 }
 
 interface IdentityDashboardProps {
-    identity: {
-        did: string;
-        name: string;
-        avatar?: string;
-        status: 'active' | 'pending' | 'revoked';
-        verifiedCredentials: Array<{
-            id: string;
-            type: string;
-            issuer: string;
-            issuanceDate: string;
-        }>;
-        devices: Array<{
-            id: string;
-            name: string;
-            lastUsed: string;
-            type: 'mobile' | 'desktop' | 'browser';
-        }>;
-    }
+  identity: {
+    did: string;
+    name: string;
+    avatar?: string;
+    status: 'active' | 'pending' | 'revoked';
+    verifiedCredentials: Array<{
+      id: string;
+      type: string;
+      issuer: string;
+      issuanceDate: string;
+    }>;
+    devices: Array<{
+      id: string;
+      name: string;
+      lastUsed: string;
+      type: 'mobile' | 'desktop' | 'browser';
+    }>;
+  };
 }
 
-const defaultIdentity = {
-    did: 'abcd:abcd:abcd',
-    name: 'Anonymous User',
-    avatar: '/images/avatar.webp',
-    status: 'pending' as const,
-    verifiedCredentials: [],
-    devices: [],
-};
+const IdentityDashboard: React.FC<IdentityDashboardProps> = ({ identity }) => {
+  const [drawerVisible, setDrawerVisible] = useState(false);
+  const screens = useBreakpoint();
 
-// Updated floating styles to match Chiti theme tokens
-const floatingStyles = defineStyle({
-    pos: "absolute",
-    bg: {
-        base: "tokens.colors.background.DEFAULT.value",
-        _dark: "tokens.colors.neutral.DEFAULT.value"
-    },
-    px: "0.5",
-    top: "-3",
-    insetStart: "2",
-    fontWeight: "medium",
-    fontSize: "sm",
-    pointerEvents: "none",
-    transition: "all 0.2s ease-in-out",
-    _peerPlaceholderShown: {
-        color: "tokens.colors.border.DEFAULT.value",
-        top: "2.5",
-        insetStart: "3",
-        fontSize: "md",
-    },
-    _peerFocusVisible: {
-        color: "tokens.colors.blue.DEFAULT.value",
-        top: "-3",
-        insetStart: "2",
-        fontSize: "sm",
-    }
-});
+  return (
+    <Content style={{ padding: '24px' }}>
+      <Card>
+        <Space direction="vertical" size="large" style={{ width: '100%' }}>
+          {/* Profile Section */}
+          <Space align="center">
+            <Avatar size={64} src={identity.avatar} />
+            <Space direction="vertical" size={0}>
+              <Title level={4}>{identity.name}</Title>
+              <Text type="secondary">{identity.did}</Text>
+              <Tag color={
+                identity.status === 'active' ? 'success' :
+                identity.status === 'pending' ? 'warning' : 'error'
+              }>
+                {identity.status}
+              </Tag>
+            </Space>
+          </Space>
 
-const IdentityDashboard: React.FC<IdentityDashboardProps> = ({ identity = defaultIdentity }) => {
-    const { open, onOpen, onClose } = useDisclosure();
+          {/* Verified Credentials Section */}
+          <Card title="Verified Credentials">
+            <Space direction="vertical" style={{ width: '100%' }}>
+              {identity.verifiedCredentials.map(credential => (
+                <Card.Grid key={credential.id} style={{ width: '100%' }}>
+                  <Space>
+                    <KeyOutlined />
+                    <Space direction="vertical" size={0}>
+                      <Text strong>{credential.type}</Text>
+                      <Text type="secondary">Issued by {credential.issuer}</Text>
+                      <Text type="secondary">{new Date(credential.issuanceDate).toLocaleDateString()}</Text>
+                    </Space>
+                  </Space>
+                </Card.Grid>
+              ))}
+            </Space>
+          </Card>
 
-    const { setColorMode } = useColorMode();
+          {/* Devices Section */}
+          <Card title="Connected Devices">
+            <Space direction="vertical" style={{ width: '100%' }}>
+              {identity.devices.map(device => (
+                <Card.Grid key={device.id} style={{ width: '100%' }}>
+                  <Space>
+                    {device.type === 'mobile' ? <UserOutlined /> :
+                     device.type === 'desktop' ? <LockOutlined /> : <SettingOutlined />}
+                    <Space direction="vertical" size={0}>
+                      <Text strong>{device.name}</Text>
+                      <Text type="secondary">Last used: {new Date(device.lastUsed).toLocaleDateString()}</Text>
+                      <Tag>{device.type}</Tag>
+                    </Space>
+                  </Space>
+                </Card.Grid>
+              ))}
+            </Space>
+          </Card>
+        </Space>
+      </Card>
 
-    // Set light mode
-    useEffect(() => {
-        setColorMode('light');
-    }, []);
-
-    return (
-        <Container maxW="container.xl" py={8} bg="tokens.colors.background.DEFAULT.value">
-            <Grid
-                templateColumns={{ base: "1fr", md: "1fr 2fr" }}
-                gap={6}
-                w="full"
-            >
-                {/* Identity Profile Section */}
-                <Card.Root bg="white" borderRadius="xl" shadow="sm">
-                    <Card.Header>
-                        <Flex justify="space-between" align="center" px={4} py={3}>
-                            <Heading size="md">Identity Profile</Heading>
-                            <IconButton
-                                aria-label="Edit profile"
-                                variant="ghost"
-                            ><Edit className="h-4 w-4" /></IconButton>
-                        </Flex>
-                    </Card.Header>
-                    <Card.Body>
-                        <Stack gap={4} align="center" px={4} py={3}>
-                            <Avatar
-                                size="sm"
-                                name={identity.name}
-                                src={identity.avatar}
-                            />
-                            <Stack gap={2} align="center">
-                                <Heading size="md">{identity.name}</Heading>
-                                <Text color="tokens.colors.border.DEFAULT.value">
-                                    {identity.did}
-                                </Text>
-                                <Tag
-                                    variant="subtle"
-                                    colorScheme={
-                                        identity.status === 'active' ? 'success' :
-                                            identity.status === 'pending' ? 'warning' : 'error'
-                                    }
-                                >
-                                    {identity.status.toUpperCase()}
-                                </Tag>
-                            </Stack>
-                            <Button
-                                variant="outline"
-                                w="full"
-                            >
-                                <Key className="h-4 w-4" /> Manage Keys
-                            </Button>
-                        </Stack>
-                    </Card.Body>
-                </Card.Root>
-
-                {/* Verified Credentials Section */}
-                <Stack gap={6}>
-                    <Card.Root bg="white" borderRadius="xl" shadow="sm">
-                        <Card.Header>
-                            <Flex justify="space-between" align="center" px={4} py={3}>
-                                <Heading size="md">Verified Credentials</Heading>
-                                <Button
-                                    variant="ghost"
-                                >
-                                    <Shield className="h-4 w-4" /> Add Credential
-                                </Button>
-                            </Flex>
-                        </Card.Header>
-                        <Card.Body>
-                            <Stack gap={4} px={4} py={3}>
-                                {identity.verifiedCredentials.map(cred => (
-                                    <Box
-                                        key={cred.id}
-                                        p={4}
-                                        borderWidth="1px"
-                                        borderColor="tokens.colors.border.DEFAULT.value"
-                                        borderRadius="lg"
-                                    >
-                                        <Flex justify="space-between" align="center">
-                                            <Stack gap={1}>
-                                                <Text fontWeight="medium">{cred.type}</Text>
-                                                <Text color="tokens.colors.border.DEFAULT.value">
-                                                    Issued by {cred.issuer} on {new Date(cred.issuanceDate).toLocaleDateString()}
-                                                </Text>
-                                            </Stack>
-                                            <IconButton
-                                                aria-label="View credential"
-                                                variant="ghost"
-                                            ><Lock className="h-4 w-4" /></IconButton>
-                                        </Flex>
-                                    </Box>
-                                ))}
-                            </Stack>
-                        </Card.Body>
-                    </Card.Root>
-
-                    {/* Connected Devices Section */}
-                    <Card.Root bg="white" borderRadius="xl" shadow="sm">
-                        <Card.Header>
-                            <Flex 
-                                justify="space-between" 
-                                align="center" 
-                                px={6} 
-                                py={4}
-                                borderBottom="1px"
-                                borderColor="gray.100"
-                            >
-                                <Heading size="md" color="gray.900">Connected Devices</Heading>
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    colorScheme="gray"
-                                >
-                                    <Settings size={16} /> Manage Devices
-                                </Button>
-                            </Flex>
-                        </Card.Header>
-                        
-                        <Card.Body p={6}>
-                            <Stack gap={4}>
-                                {identity.devices.map(device => (
-                                    <Box
-                                        key={device.id}
-                                        p={4}
-                                        borderWidth="1px"
-                                        borderColor="gray.200"
-                                        borderRadius="lg"
-                                        _hover={{ borderColor: "gray.300" }}
-                                        transition="all 0.2s"
-                                    >
-                                        <Flex justify="space-between" align="center">
-                                            <Stack gap={1}>
-                                                <Text 
-                                                    fontWeight="semibold" 
-                                                    color="gray.900"
-                                                >
-                                                    {device.name}
-                                                </Text>
-                                                <Text 
-                                                    fontSize="sm" 
-                                                    color="gray.500"
-                                                >
-                                                    Last used {new Date(device.lastUsed).toLocaleString()}
-                                                </Text>
-                                            </Stack>
-                                            <Tag
-                                                size="sm"
-                                                variant="subtle"
-                                                colorScheme={
-                                                    device.type === 'mobile' ? 'green' :
-                                                    device.type === 'desktop' ? 'blue' : 'purple'
-                                                }
-                                            >
-                                                {device.type}
-                                            </Tag>
-                                        </Flex>
-                                    </Box>
-                                ))}
-                            </Stack>
-                        </Card.Body>
-                    </Card.Root>
-                </Stack>
-            </Grid>
-
-            {/* Edit Profile Drawer */}
-            <DrawerRoot>
-                <DrawerBackdrop />
-                <DrawerTrigger asChild>
-                    <IconButton
-                        aria-label="Edit profile"
-                        variant="ghost"
-                        size="sm"
-                        _hover={{ bg: "gray.100" }}
-                    ><Edit size={16} /></IconButton>
-                </DrawerTrigger>
-                <DrawerBody 
-                    bg="white" 
-                    _dark={{ bg: "gray.800" }}
-                    p={6}
-                >
-                    <Stack gap={6}>
-                        <DrawerHeader px={0}>
-                            <DrawerTitle>Edit Profile</DrawerTitle>
-                        </DrawerHeader>
-                        
-                        <Field.Root>
-                            <Box pos="relative" w="full">
-                                <Input
-                                    className="peer"
-                                    defaultValue={identity.name}
-                                    placeholder="Enter your name"
-                                    variant="flushed"
-                                    bg="gray.50"
-                                    _hover={{ bg: "gray.100" }}
-                                    _focus={{ bg: "gray.100" }}
-                                />
-                                <Field.Label css={floatingStyles}>
-                                    Name
-                                </Field.Label>
-                            </Box>
-                        </Field.Root>
-                        
-                        <DrawerFooter px={0}>
-                            <Button variant="ghost" mr={3}>Cancel</Button>
-                            <Button colorScheme="blue">Save</Button>
-                        </DrawerFooter>
-                    </Stack>
-                </DrawerBody>
-            </DrawerRoot>
-        </Container>
-    );
+      {/* Edit Profile Drawer */}
+      <Drawer
+        title="Edit Profile"
+        placement="right"
+        onClose={() => setDrawerVisible(false)}
+        visible={drawerVisible}
+      >
+        <Space direction="vertical" size="large" style={{ width: '100%' }}>
+          <Input placeholder="Name" defaultValue={identity.name} />
+          <Button type="primary" onClick={() => setDrawerVisible(false)}>
+            Save Changes
+          </Button>
+        </Space>
+      </Drawer>
+    </Content>
+  );
 };
 
 export default IdentityDashboard;

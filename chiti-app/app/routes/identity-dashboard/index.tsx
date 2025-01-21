@@ -1,5 +1,4 @@
-import { Flex } from "@chakra-ui/react";
-// import IdentityDashboard from "./identity-dashboard";
+import { Layout } from 'antd';
 import RightSidebar from "./components/RightSidebar";
 import Feed from "./components/Feed";
 import Sidebar from "./components/Sidebar";
@@ -15,11 +14,11 @@ export function meta({ }: Route.MetaArgs) {
 // Main App Component
 const App = () => {
     return (
-        <Flex h="100vh">
+        <Layout style={{ height: '100vh', display: 'flex', flexDirection: 'row' }}>
             <Sidebar />
             <Feed />
             <RightSidebar />
-        </Flex>
+        </Layout>
     );
 };
 

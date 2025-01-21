@@ -7,10 +7,10 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import { Provider } from "./components/ui/provider"
 import type { Route } from "./+types/root";
 import stylesheet from "./app.css?url";
 import Header from "./components/layout/header";
+import { ConfigProvider, theme } from "antd";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -36,12 +36,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Provider>
+        <ConfigProvider
+          theme={{
+            algorithm: theme.defaultAlgorithm,
+            token: {
+              colorPrimary: '#007FFF',
+              borderRadius: 6,
+            },
+          }}
+        >
           <Header />
           {children}
           <ScrollRestoration />
           <Scripts />
-        </Provider>
+        </ConfigProvider>
       </body>
     </html>
   );
