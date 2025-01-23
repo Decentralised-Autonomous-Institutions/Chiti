@@ -8,8 +8,6 @@
 > Into that heaven of freedom, my Father, let my country awake. <br>
 > \- Rabindranath Tagore
 
-A decentralised implementation of the *[beckn protocol](https://developers.becknprotocol.io/docs/introduction/introduction/)*
-
 ## Why?
 Decentralised networks require decentralised Identities. Most identity solutions today use OAuth2.0 or OpenID Connect to authenticate users. These solutions however don't have a way to allow the user to update their personality, features and attributes of themselves on these systems to truly reflect the nature of an identity that is dynamic and comprised of multiple aspects.
 

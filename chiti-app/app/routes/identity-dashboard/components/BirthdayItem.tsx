@@ -1,6 +1,5 @@
 import React from 'react';
-import { HStack, VStack, Text } from "@chakra-ui/react";
-import { Avatar } from "~/components/ui/avatar";
+import { Space, Typography, Avatar } from 'antd';
 
 interface BirthdayItemProps {
   name: string;
@@ -8,17 +7,19 @@ interface BirthdayItemProps {
   date: string;
 }
 
+const { Text } = Typography;
+
 const BirthdayItem: React.FC<BirthdayItemProps> = ({ name, age, date }) => {
   return (
-    <HStack>
-      <Avatar size="sm" />
-      <VStack align="start" gap={0}>
-        <Text fontWeight="medium">{name}</Text>
-        <Text fontSize="sm" color="gray.500">
+    <Space align="start">
+      <Avatar size="small" />
+      <Space direction="vertical" size={0}>
+        <Text strong>{name}</Text>
+        <Text type="secondary" style={{ fontSize: '14px' }}>
           Turning {age} years old
         </Text>
-      </VStack>
-    </HStack>
+      </Space>
+    </Space>
   );
 };
 

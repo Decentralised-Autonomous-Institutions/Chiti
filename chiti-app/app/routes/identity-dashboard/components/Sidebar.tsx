@@ -1,27 +1,54 @@
-import { VStack, Heading, Box } from "@chakra-ui/react";
-import { Button } from "~/components/ui/button";
+import React from 'react';
+import { Layout, Typography, Button, Space } from 'antd';
 
-const Sidebar = () => {
+const { Sider } = Layout;
+const { Title } = Typography;
+
+const Sidebar: React.FC = () => {
     return (
-        <Box rounded="md" borderWidth="1px" borderColor="#cdd9d4" boxSizing="border-box" >
-            <VStack
-                w="250px" h="100vh" p={4} borderRight="1px" borderColor="black.200" bg="white"
-                position="sticky"
-                top={0}
-                gap={6}>
-                <Heading size="md" mb={6}>Chiti</Heading>
+        <Sider
+            width={250}
+            style={{
+                background: '#fff',
+                borderRight: '1px solid #cdd9d4',
+                boxSizing: 'border-box',
+                height: '100vh',
+                position: 'sticky',
+                top: 0,
+                padding: 16,
+            }}
+        >
+            <Space direction="vertical" size={24} style={{ display: 'flex', height: '100%' }}>
+                {/* Logo / Title */}
+                <Title level={4} style={{ margin: 0 }}>
+                    Chiti
+                </Title>
 
-                <VStack gap={2} align="stretch" w="100%">
-                    <Button variant="solid" justifyContent="start">Home</Button>
-                    <Button variant="ghost" justifyContent="start">Explore</Button>
-                    <Button variant="ghost" justifyContent="start">Activities</Button>
-                    <Button variant="ghost" justifyContent="start">Connections</Button>
-                    <Button variant="ghost" justifyContent="start">Profile</Button>
-                </VStack>
+                {/* Navigation Buttons */}
+                <Space direction="vertical" size={12} style={{ width: '100%' }}>
+                    <Button block type="primary">
+                        Home
+                    </Button>
+                    <Button block type="text">
+                        Explore
+                    </Button>
+                    <Button block type="text">
+                        Activities
+                    </Button>
+                    <Button block type="text">
+                        Connections
+                    </Button>
+                    <Button block type="text">
+                        Profile
+                    </Button>
+                </Space>
 
-                <Button mt="auto" colorScheme="red" w="100%">Sign out</Button>
-            </VStack>
-        </Box>
+                {/* Sign Out Button */}
+                <Button block danger style={{ marginTop: 'auto' }}>
+                    Sign out
+                </Button>
+            </Space>
+        </Sider>
     );
 };
 

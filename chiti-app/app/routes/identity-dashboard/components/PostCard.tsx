@@ -1,49 +1,69 @@
-import { Button, Card, HStack, Image, Text, VStack } from "@chakra-ui/react";
-import { Avatar } from "~/components/ui/avatar";
+import React from 'react';
+import { Card, Image, Space, Typography, Button, Avatar } from 'antd';
 
 interface PostCardProps {
-    title: string;
-    subtitle: string;
-    content: string;
-    imageUrl?: string;
-    images?: string[];
-    likes: number;
-    comments: number;
+  title: string;
+  subtitle: string;
+  content: string;
+  imageUrl?: string;
+  images?: string[];
+  likes: number;
+  comments: number;
 }
 
+const { Text } = Typography;
 
-// Utility Components
-const PostCard: React.FC<PostCardProps> = ({ title, subtitle, content, imageUrl, images, likes, comments }) => {
-    return (
-        <Card.Root>
-            <Card.Body>
-                <HStack mb={4}>
-                    <Avatar size="sm" name={"Airesh Bhat"} />
-                    <VStack align="start" gap={0}>
-                        <Text fontWeight="bold">{title}</Text>
-                        <Text fontSize="sm" color="gray.500">{subtitle}</Text>
-                    </VStack>
-                </HStack>
+const PostCard: React.FC<PostCardProps> = ({
+  title,
+  subtitle,
+  content,
+  imageUrl,
+  images,
+  likes,
+  comments
+}) => {
+  return (
+    <Card style={{ marginBottom: 16 }}>
+      <Space align="start" style={{ marginBottom: 16 }}>
+        <Avatar size="small" style={{ marginRight: 8 }}>
+          AB
+        </Avatar>
+        <Space direction="vertical" size={0}>
+          <Text strong>{title}</Text>
+          <Text type="secondary">{subtitle}</Text>
+        </Space>
+      </Space>
 
-                <Text mb={4}>{content}</Text>
+      <Text>{content}</Text>
 
-                {imageUrl && <Image src={imageUrl} borderRadius="md" mb={4} />}
-                {images && (
-                    <HStack gap={2} mb={4}>
-                        {images.map((img, i) => (
-                            <Image key={i} src={img} w="100px" h="100px" borderRadius="md" />
-                        ))}
-                    </HStack>
-                )}
+      {imageUrl && (
+        <Image
+          src={imageUrl}
+          style={{ borderRadius: 8, marginTop: 16, marginBottom: 16 }}
+          preview={false}
+        />
+      )}
 
-                <HStack gap={4}>
-                    <Button variant="ghost">Like ({likes})</Button>
-                    <Button variant="ghost">Comment ({comments})</Button>
-                    <Button variant="ghost">Share</Button>
-                </HStack>
-            </Card.Body>
-        </Card.Root>
-    );
+      {images && (
+        <Space wrap style={{ gap: 8, marginBottom: 16 }}>
+          {images.map((img, i) => (
+            <Image
+              key={i}
+              src={img}
+              style={{ width: 100, height: 100, borderRadius: 8 }}
+              preview={false}
+            />
+          ))}
+        </Space>
+      )}
+
+      <Space size={16}>
+        <Button type="text">Like ({likes})</Button>
+        <Button type="text">Comment ({comments})</Button>
+        <Button type="text">Share</Button>
+      </Space>
+    </Card>
+  );
 };
 
 export default PostCard;

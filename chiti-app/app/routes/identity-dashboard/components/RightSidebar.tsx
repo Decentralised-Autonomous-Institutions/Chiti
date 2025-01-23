@@ -1,52 +1,72 @@
-import { Box, Card, Heading, Image, Text, VStack } from "@chakra-ui/react";
+import { Layout, Typography, Card, Space, Image } from 'antd';
 import EventItem from "./EventItem";
 import BirthdayItem from "./BirthdayItem";
 
+const { Sider } = Layout;
+const { Title, Text } = Typography;
+
 const RightSidebar = () => {
     return (
-        <VStack w="300px" h="100vh" p={4} borderLeft="1px" borderColor="gray.200" gap={6}>
-            {/* Events Section */}
-            <Box w="100%">
-                <Heading size="sm" mb={4}>Your upcoming events</Heading>
-                <VStack align="stretch" gap={3}>
-                    <EventItem
-                        title="Garden BBQ"
-                        location="Tom's Garden"
-                        date="Sat 16 June"
-                    />
-                    <EventItem
-                        title="City Council Vote"
-                        location="Town Hall"
-                        date="Sat 16 June"
-                    />
-                    {/* Add more events */}
-                </VStack>
-            </Box>
+        <Sider 
+            width={300} 
+            style={{ 
+                background: '#fff',
+                borderLeft: '1px solid #f0f0f0',
+                padding: '16px',
+                height: '100vh',
+                overflow: 'auto'
+            }}
+        >
+            <Space direction="vertical" size={24} style={{ width: '100%' }}>
+                {/* Events Section */}
+                <div>
+                    <Title level={5} style={{ marginBottom: 16 }}>
+                        Your upcoming events
+                    </Title>
+                    <Space direction="vertical" size={12} style={{ width: '100%' }}>
+                        <EventItem
+                            title="Garden BBQ"
+                            location="Tom's Garden"
+                            date="Sat 16 June"
+                        />
+                        <EventItem
+                            title="City Council Vote"
+                            location="Town Hall"
+                            date="Sat 16 June"
+                        />
+                    </Space>
+                </div>
 
-            {/* Birthday Section */}
-            <Box w="100%">
-                <Heading size="sm" mb={4}>Birthdays</Heading>
-                <VStack align="stretch">
-                    <BirthdayItem
-                        name="Bob Hammond"
-                        age={28}
-                        date="20 August"
-                    />
-                    {/* Add more birthdays */}
-                </VStack>
-            </Box>
+                {/* Birthday Section */}
+                <div>
+                    <Title level={5} style={{ marginBottom: 16 }}>
+                        Birthdays
+                    </Title>
+                    <Space direction="vertical" size={12} style={{ width: '100%' }}>
+                        <BirthdayItem
+                            name="Bob Hammond"
+                            age={28}
+                            date="20 August"
+                        />
+                    </Space>
+                </div>
 
-            {/* Value Exchange Center */}
-            <Box w="100%">
-                <Heading size="sm" mb={4}>Value Exchange Center</Heading>
-                <Card.Root>
-                    <Card.Body>
-                        <Image src="/laptop.jpg" borderRadius="md" mb={4} />
-                        <Text fontSize="sm" color="gray.600">Transfer Interface</Text>
-                    </Card.Body>
-                </Card.Root>
-            </Box>
-        </VStack>
+                {/* Value Exchange Center */}
+                <div>
+                    <Title level={5} style={{ marginBottom: 16 }}>
+                        Value Exchange Center
+                    </Title>
+                    <Card>
+                        <Image 
+                            src="/laptop.jpg" 
+                            style={{ borderRadius: 8, marginBottom: 16 }} 
+                            preview={false}
+                        />
+                        <Text type="secondary">Transfer Interface</Text>
+                    </Card>
+                </div>
+            </Space>
+        </Sider>
     );
 };
 

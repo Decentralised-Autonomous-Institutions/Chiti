@@ -1,4 +1,4 @@
-import { HStack, VStack, Box, Text } from "@chakra-ui/react";
+import { Space, Typography } from 'antd';
 
 interface EventItemProps {
   title: string;
@@ -6,19 +6,25 @@ interface EventItemProps {
   date: string;
 }
 
+const { Text } = Typography;
+
 const EventItem: React.FC<EventItemProps> = ({ title, location, date }) => {
   return (
-    <HStack>
-      <Box p={2} bg="gray.100" borderRadius="md">
-        <Text fontSize="sm">{date.split(" ")[1]}</Text>
-      </Box>
-      <VStack align="start" gap={0}>
-        <Text fontWeight="medium">{title}</Text>
-        <Text fontSize="sm" color="gray.500">
+    <Space align="start">
+      <div style={{ 
+        padding: '8px', 
+        background: '#f5f5f5', 
+        borderRadius: '4px' 
+      }}>
+        <Text style={{ fontSize: '14px' }}>{date.split(" ")[1]}</Text>
+      </div>
+      <Space direction="vertical" size={0}>
+        <Text strong>{title}</Text>
+        <Text type="secondary" style={{ fontSize: '14px' }}>
           {location}
         </Text>
-      </VStack>
-    </HStack>
+      </Space>
+    </Space>
   );
 };
 

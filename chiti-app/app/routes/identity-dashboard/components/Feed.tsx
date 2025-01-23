@@ -1,56 +1,58 @@
-import { Box, Button, Card, CardBody, HStack, IconButton, Input, VStack } from "@chakra-ui/react";
-import { Avatar } from "~/components/ui/avatar";
-import PostCard from "./PostCard";
-import { Paperclip, Link2, MapPin, Smile } from "lucide-react";
+import React from 'react';
+import { Layout, Input, Button, Card, Space, Avatar } from 'antd';
+import { Paperclip, Link2, MapPin, Smile } from 'lucide-react';
+import PostCard from './PostCard';
 
-const Feed = () => {
-    return (
-        <Box flex={1} p={4}>
-            <Input
-                placeholder="Enter your decentralized identity here"
-                mb={4}
-                size="lg"
-            />
+const { Content } = Layout;
 
-            {/* Post Creation Card */}
-            <Card.Root mb={4}>
-                <Card.Body>
-                    <HStack gap={4}>
-                        <Avatar size="sm" />
-                        <Input placeholder="What" />
-                    </HStack>
-                    <HStack mt={4} gap={4}>
-                        <IconButton aria-label="Attach" ><Paperclip /></IconButton>
-                        <IconButton aria-label="Link" ><Link2 /></IconButton>
-                        <IconButton aria-label="Location" ><MapPin /></IconButton>
-                        <IconButton aria-label="Emoji" ><Smile /></IconButton>
-                        <Button ml="auto">Post</Button>
-                    </HStack>
-                </Card.Body>
-            </Card.Root>
+const Feed: React.FC = () => {
+  return (
+    <Content style={{ flex: 1, padding: 16 }}>
+      <Input
+        placeholder="Enter your decentralized identity here"
+        style={{ marginBottom: 16 }}
+        size="large"
+      />
 
-            {/* Posts */}
-            <VStack gap={4} align="stretch">
-                <PostCard
-                    title="New User Onboarding Available"
-                    subtitle="Quick Access to Knowledge Base for New Users"
-                    content="Welcome to the App! Login with your decentralized identity to get started. If you're new here, we have an onboarding option available to help you get started. Check out our knowledge base for..."
-                    imageUrl="/mountains.jpg"
-                    likes={230}
-                    comments={5}
-                />
+      {/* Post Creation Card */}
+      <Card style={{ marginBottom: 16 }}>
+        <Space direction="vertical" style={{ width: '100%' }}>
+          <Space align="center" size={16} style={{ width: '100%' }}>
+            <Avatar size="small">AB</Avatar>
+            <Input placeholder="What" />
+          </Space>
+          <Space align="center" style={{ width: '100%', justifyContent: 'flex-end' }}>
+            <Button icon={<Paperclip size={16} />} type="text" />
+            <Button icon={<Link2 size={16} />} type="text" />
+            <Button icon={<MapPin size={16} />} type="text" />
+            <Button icon={<Smile size={16} />} type="text" />
+            <Button type="primary">Post</Button>
+          </Space>
+        </Space>
+      </Card>
 
-                <PostCard
-                    title="Photo Album"
-                    subtitle="Thursday, 17 August 10:40 AM"
-                    content="I'm selling these clothes. Anyone interested? Or shall we do a swap evening at mine? 😊"
-                    images={["/clothes1.jpg", "/clothes2.jpg", "/clothes3.jpg"]}
-                    likes={18}
-                    comments={2}
-                />
-            </VStack>
-        </Box>
-    );
+      {/* Posts */}
+      <Space direction="vertical" style={{ width: '100%' }} size={16}>
+        <PostCard
+          title="New User Onboarding Available"
+          subtitle="Quick Access to Knowledge Base for New Users"
+          content="Welcome to the App! Login with your decentralized identity to get started. If you're new here, we have an onboarding option available to help you get started. Check out our knowledge base for..."
+          imageUrl="/mountains.jpg"
+          likes={230}
+          comments={5}
+        />
+
+        <PostCard
+          title="Photo Album"
+          subtitle="Thursday, 17 August 10:40 AM"
+          content="I'm selling these clothes. Anyone interested? Or shall we do a swap evening at mine? 😊"
+          images={["/clothes1.jpg", "/clothes2.jpg", "/clothes3.jpg"]}
+          likes={18}
+          comments={2}
+        />
+      </Space>
+    </Content>
+  );
 };
 
 export default Feed;
