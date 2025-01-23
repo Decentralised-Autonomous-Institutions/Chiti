@@ -7,9 +7,10 @@ edition = "2021"
 
 [workspace]
 members = [
-    "node",
+    "blockchain-node",
     "pallets/identity",
     "runtime",
+    "src-tauri/",
 ]
 resolver = "2"
 

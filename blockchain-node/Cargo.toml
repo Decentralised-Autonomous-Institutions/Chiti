@@ -1,5 +1,5 @@
 [package]
-name = "solochain-template-node"
+name = "chiti-node"
 description = "A solochain node template built with Substrate, part of Polkadot Sdk. (polkadot v1.15.0)"
 version = "0.1.0"
 license = "Unlicense"
