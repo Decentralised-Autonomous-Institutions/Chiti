@@ -23,3 +23,10 @@ serde = { version = "1.0", features = ["derive"] }
 log = "0.4"
 tauri = { version = "2.1.0", features = [] }
 tauri-plugin-log = "2.0.0-rc"
+iroh = "0.29.0"
+iroh-base = "0.29.0"
+tokio = "1.43.0"
+anyhow = "1.0.95"
+iroh-blobs = { version = "0.29.0", features = ["rpc"] }
+willow-data-model = "0.1.0"
+meadowcap = "0.1.0"

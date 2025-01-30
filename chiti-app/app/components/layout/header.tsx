@@ -63,7 +63,7 @@ const Header = () => {
         </Menu>
 
         <Space style={{ marginLeft: 24 }}>
-          <Avatar size="small" src="/images/avatar.png" />
+          <Avatar size="small" src="/images/avatar.webp" />
           <Button 
             type="text" 
             icon={<Settings size={16} />}
