@@ -17,3 +17,8 @@
 
 # Ignore the output of `cargo doc`
 /target/*
+
+
+# Added by cargo
+
+/target
